@@ -2,6 +2,9 @@
     @if($saved)
         <x-alert message="Livro atualizado com sucesso" />
     @endif
+
+    <x-notification />
+
     <form wire:submit.prevent="save" class="w-full space-y-4">
         <!-- Input name -->
 	    <div class="w-full mb-6 md:mb-0">

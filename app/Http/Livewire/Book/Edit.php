@@ -33,6 +33,11 @@ class Edit extends Component
     public function save() {
         $this->validate();
         $this->book->update($this->book->toArray());
+
+        // Evento de notification com AlpineJS
+        $this->dispatchBrowserEvent('notify', 'Livro atualizado com sucesso');
+
+        // Exibindo Alert Message
         $this->saved = true;
         // return redirect()->route('books.index');
     }
