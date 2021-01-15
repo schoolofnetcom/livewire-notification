@@ -12,9 +12,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
-Route::get('/books', function(){
-    return Book::all();
-});
+
 
 require __DIR__.'/auth.php';

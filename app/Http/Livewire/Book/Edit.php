@@ -8,6 +8,7 @@ use App\Models\Book;
 class Edit extends Component
 {
     public Book $book;
+    public $saved = false;
 
     protected $rules = [
         'book.name' => 'required|string',
@@ -19,11 +20,21 @@ class Edit extends Component
         $this->book = $book;
     }
 
+    public function updated($field) {
+        if($field != "saved") {
+            $this->saved = false;
+        }
+    }
+
+    // public function closeMessage() {
+    //     $this->saved = false;
+    // }
+
     public function save() {
         $this->validate();
         $this->book->update($this->book->toArray());
-        session()->flash('message', 'Livro atualizado com sucesso');
-        return redirect()->route('books.index');
+        $this->saved = true;
+        // return redirect()->route('books.index');
     }
 
     public function render()

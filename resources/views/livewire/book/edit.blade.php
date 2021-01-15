@@ -1,7 +1,10 @@
-
 <div>
-    <form wire:submit.prevent="save" class="w-full">
-	    <div class="w-full px-3 mb-6 md:mb-0">
+    @if($saved)
+        <x-alert message="Livro atualizado com sucesso" />
+    @endif
+    <form wire:submit.prevent="save" class="w-full space-y-4">
+        <!-- Input name -->
+	    <div class="w-full mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
                 Nome
             </label>
@@ -12,7 +15,8 @@
                 </p>
             @endif
     	</div>
-        <div class="w-full px-3 mb-6 md:mb-0">
+        <!-- Input pages -->
+        <div class="w-full mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="pages">
                 Quantidade de Páginas
             </label>
@@ -23,7 +27,8 @@
                 </p>
             @endif
     	</div>
-        <div class="w-full px-3 mb-6 md:mb-0">
+        <!-- Input author -->
+        <div class="w-full mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="author">
                 Autor
             </label>
@@ -34,8 +39,9 @@
                 </p>
             @endif
     	</div>
+        <!-- Submit Button -->
         <button
-            class="px-3 ml-3 py-2 bg-green-400" type="submit">
+            class="px-3 py-2 bg-green-400" type="submit">
             Atualizar
         </button>
     </form>
